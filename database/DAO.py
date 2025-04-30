@@ -14,7 +14,8 @@ class DAO():
         result = []
 
         cursor = conn.cursor(dictionary=True)
-        query = """ ADD YOUR QUERY """
+        query = """select * 
+                    from Nerc """
 
         cursor.execute(query)
 
@@ -32,7 +33,10 @@ class DAO():
         result = []
 
         cursor = conn.cursor(dictionary=True)
-        query = """ ADD YOUR QUERY """
+        query = """select *
+                    from PowerOutages po 
+                    where nerc_id = %s
+                    order by po.date_event_began"""
 
         cursor.execute(query, (nerc.id,))
 
